@@ -1,0 +1,43 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="container">
+  <form action="/weather-report" method="post">
+    <input
+      type="search"
+      name="cityName"
+      id="search-weather"
+      placeholder="Plese enter the city name"
+    />
+  </form>
+
+  <div class="weather-container">
+    %> <% if (locals.data) { %>
+    <div>
+      <div class="date">
+        <h2><%= data.name %></h2>
+        <p style="text-align: center"><%= date %></p>
+      </div>
+    </div>
+    <div class="temp-container">
+      <img
+        src="https://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png"
+        alt="<%= data.weather[0].description %>"
+        class="weather-icon"
+      />
+      <div class="temp"><%= data.main.temp %>°</div>
+      <div class="weather">
+        <div><%= data.weather[0].main %></div>
+        <div class="description"><%= data.weather[0].description %></div>
+      </div>
+    </div>
+
+    <div style="text-align: center">
+      Min | Max<br />
+      <%= data.main.temp_min %>° | <%= data.main.temp_max %>°
+    </div>
+
+    <% } %>
+  </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

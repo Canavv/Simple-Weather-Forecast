@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="container">
+  <h1 style="font-size: 5rem">Weather Forecast</h1>
+  <% if (locals.errormessage) { %>
+  <div id="error" class="invisible"><%= errormessage %></div>
+  <% } %>
+  <form action="/weather-report" method="post" class="form">
+    <input
+      type="search"
+      name="cityName"
+      id="search"
+      placeholder="Plese enter the city name"
+    />
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<%- include("./partials/footer.ejs") %>
